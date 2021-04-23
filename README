@@ -1,0 +1,23 @@
+TOGOE-DULCU ANDREEA-CRISTINA 322 CB, TEMA 3 PC
+
+	In rezolvarea acestei teme am ales sa folosesc biblioteca parson pentru 
+parsarea de JSON, din care am utilizat functii precum json_parse_string, ce 
+parseaza prima valoare json intr-un string, json_value_get_object ce transforma
+un json value in json object, ca apoi json_object_get_string sa transforme 
+obiectul in string.  Se citeste de la tastatura pana la primirea comenzii exit, 
+folosind un while(1), si identific daca ceea ce a fost citit este o comanda 
+valida dintre cele 9. Daca este vorba de register, login, get_book, add_book 
+sau delete_book, sunt oferite prompturile pentru introducerea informatiilor 
+necesare, iar apoi e apelata functia compute_X_message (get, post, sau delete),
+iar mesajul este trimis catre server. Dupa ce primesc raspunsul serverului, 
+extrag codul intors de acesta pentru a verifica daca operatia a fost efectuata 
+cu succes, caz in care afisez un mesaj de succes, altfel extrag mesajul de 
+eroare intors de server si il afisez. Dupa login, serverul intoarce un cookie 
+in caz de succes asa ca il retin pe acesta si il includ in urmatoarele mesaje 
+catre server ce presupun demonstrarea faptului ca sunt autentificata( pt 
+comenzile enter_library, logout). Dupa comanda enter_library, serverul imi 
+intoarce un mesaj ce contine un JWT pe care il retin de asemean si il trimit in
+mesajele urmatoare, atunci cand e nevoia sa demonstrez accesul la biblioteca
+(get_books, get_book, delete_book). Atunci cand se primeste comanda de logout, 
+acest jwt si cookie se sterg. La comanda exit tot procesul se incheie si 
+conexiunea la server e inchisa.
